@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APK Privacy Analyzer</title>
+    <meta
+      name="description"
+      content="Upload an Android APK to inspect permissions, privacy risk, and risky combinations directly in your browser."
+    />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('apk-privacy-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme ?? (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script src="https://unpkg.com/app-info-parser/dist/app-info-parser.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
